@@ -20,7 +20,7 @@ The objective is to maintain accurate robot position estimation even when measur
 
 * Tracking of multiple autonomous service robots
 * Noisy measurement simulation
-* Kalman Filter based state estimation
+* Kalman Filter-based state estimation
 * Extended Kalman Filter comparison
 * Self-healing tracking during measurement outages
 * Performance evaluation using RMSE metrics
@@ -41,17 +41,36 @@ The objective is to maintain accurate robot position estimation even when measur
 
 ---
 
-## Project Structure
+## Repository Structure
 
 ```text
 .
-├── controllers/
-├── worlds/
-├── tracking_log.csv
-├── kalman_tracking.py
-├── ekf_tracking.py
-├── self_healing_tracking.py
+├── Codes/
+│   ├── kalman_tracking.py
+│   ├── ekf_tracking.py
+│   └── self_healing_tracking.py
+│
+├── laTeX/
+│   ├── main.tex
+│   ├── references.bib
+│   ├── figures/
+│   └── ...
+│
 ├── results/
+│   ├── TARGET_1_ekf_plot.png
+│   ├── TARGET_1_kalman_plot.png
+│   ├── TARGET_1_self_healing_plot.png
+│   ├── TARGET_2_ekf_plot.png
+│   ├── TARGET_2_kalman_plot.png
+│   ├── TARGET_2_self_healing_plot.png
+│   ├── tracking_log.csv
+│   ├── kalman_results.csv
+│   ├── ekf_results.csv
+│   └── self_healing_results.csv
+│
+├── EE4084_presentation.pdf
+├── kalman_conference_paper.pdf
+├── world.wbt
 └── README.md
 ```
 
@@ -64,26 +83,51 @@ The objective is to maintain accurate robot position estimation even when measur
 * Pandas
 * Matplotlib
 * Webots
+
+Install dependencies:
+
+```bash
+pip install numpy pandas matplotlib
+```
+
 ---
 
 ## Running the Project
 
-1. Open the Webots world.
-2. Run the simulation.
-3. Generate tracking data.
-4. Execute the desired tracking algorithm:
+1. Open `world.wbt` in Webots.
+2. Run the simulation to generate robot position measurements.
+3. Execute the desired tracking algorithm from the `Codes` folder.
+
+Kalman Filter:
 
 ```bash
-python kalman_tracking.py
+python Codes/kalman_tracking.py
 ```
 
-```bash
-python ekf_tracking.py
-```
+Extended Kalman Filter:
 
 ```bash
-python self_healing_tracking.py
+python Codes/ekf_tracking.py
 ```
+
+Self-Healing Kalman Filter:
+
+```bash
+python Codes/self_healing_tracking.py
+```
+
+---
+
+## Results
+
+The Kalman Filter reduced tracking error by approximately 49% compared to raw noisy measurements.
+
+| Method          | TARGET 1 RMSE (m) | TARGET 2 RMSE (m) |
+| --------------- | ----------------- | ----------------- |
+| Measurements    | 0.0117            | 0.0115            |
+| Kalman Filter   | 0.0060            | 0.0059            |
+| Self-Healing KF | 0.0065            | 0.0062            |
+| EKF             | 0.0095            | 0.0092            |
 
 ---
 
@@ -92,3 +136,13 @@ python self_healing_tracking.py
 * Sıla Ilgıt Kılınç – Marmara University
 * Yiğit Yılmaz – Marmara University
 
+---
+
+## Included Materials
+
+* IEEE Conference Paper (PDF)
+* Complete LaTeX Source Files
+* Python Source Code
+* Webots Simulation World
+* Experimental Results
+* Project Presentation Slides
