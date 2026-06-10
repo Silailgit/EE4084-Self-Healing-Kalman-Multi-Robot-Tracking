@@ -92,8 +92,3 @@ python self_healing_tracking.py
 * Sıla Ilgıt Kılınç – Marmara University
 * Yiğit Yılmaz – Marmara University
 
----
-
-## Reference
-
-Y. Yılmaz and S. I. Kılınç, "A Self-Healing Kalman Filter Framework for Multi-Robot Tracking in Indoor Service Environments", 2026.
